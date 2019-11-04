@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+   name: justperform
+spec:
+   replicas: 2
+   selector:
+      matchLabels:
+         app: justperform
+   minReadySeconds: 10
+   strategy:
+      type: RollingUpdate
+      rollingUpdate:
+         maxUnavailable: 1
+         maxSurge: 1
+   template:
+      metadata:
+         labels:
+            app: justperform
+      spec:
+         containers:
+         - name: justperform
+           image: karthiksr/justperform:innovate
+           imagePullSecrets:
+           - name: regcred
+           ports:
+           - containerPort: 8080
