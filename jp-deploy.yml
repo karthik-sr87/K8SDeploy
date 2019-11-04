@@ -21,7 +21,7 @@ spec:
          containers:
          - name: justperform
            image: karthiksr/justperform:innovate
-           imagePullSecrets:
-           - name: regcred
            ports:
            - containerPort: 8080
+         imagePullSecrets:
+         - name: regcred
